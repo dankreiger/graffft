@@ -1,6 +1,6 @@
 {
   "name": "@graffft/button",
-  "version": "0.0.1",
+  "version": "0.1.0-alpha.0",
   "description": "graffft: a button component",
   "keywords": [
     "button"
