@@ -1,0 +1,75 @@
+{
+  "name": "graffft",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "workspaces": [
+    "packages/**/*",
+    "../packages/**/*"
+  ],
+  "scripts": {
+    "build": "yarn clean:pre-build && node scripts/build && yarn clean:post-build",
+    "bootstrap": "lerna bootstrap",
+    "build:styleguide": "yarn add react react-dom && yarn docz:build",
+    "clean": "lerna clean",
+    "clean:pre-build": "./scripts/clean_pre_build.sh",
+    "clean:post-build": "./scripts/clean_post_build.sh",
+    "docz": "docz dev",
+    "docz:build": "yarn docz:clean && docz build",
+    "docz:clean": "rm -rf .docz && rm -rf docs",
+    "docz:dev": "yarn docz:clean && docz dev",
+    "release": "yarn build && yarn release:publish && yarn docz:build && yarn docz:deploy",
+    "release:prerelease": "yarn build && yarn lerna publish --conventional-prerelease --pre-dist-tag next --yes",
+    "release:publish": "yarn lerna publish --conventional-commits",
+    "start": "yarn docz:dev",
+    "test": "jest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "packages/**/*.{js,tsx,jsx,json,css}": [
+      "prettier --single-quote --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@rollup/plugin-commonjs": "12.0.0",
+    "@rollup/plugin-node-resolve": "8.0.0",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "docz": "latest",
+    "husky": "4.2.5",
+    "jest": "^26.0.1",
+    "lerna": "^3.21.0",
+    "lint-staged": "10.2.6",
+    "minimist": "^1.2.5",
+    "prettier": "2.0.5",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "rollup": "2.10.8",
+    "rollup-plugin-size-snapshot": "^0.12.0",
+    "rollup-plugin-typescript2": "0.27.1",
+    "ts-jest": "^26.1.0",
+    "typescript": "^3.9.3"
+  },
+  "peerDependencies": {
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "resolutions": {
+    "docz/**/webpack": "4.41.1"
+  }
+}
