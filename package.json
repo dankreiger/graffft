@@ -14,12 +14,12 @@
     "../packages/**/*"
   ],
   "scripts": {
-    "build": "yarn clean:pre-build && node scripts/build && yarn clean:post-build",
     "bootstrap": "lerna bootstrap",
+    "build": "yarn clean:pre-build && node scripts/build && yarn clean:post-build",
     "build:styleguide": "yarn add react react-dom && yarn docz:build",
     "clean": "lerna clean",
-    "clean:pre-build": "./scripts/clean_pre_build.sh",
     "clean:post-build": "./scripts/clean_post_build.sh",
+    "clean:pre-build": "./scripts/clean_pre_build.sh",
     "docz": "docz dev",
     "docz:build": "yarn docz:clean && docz build",
     "docz:clean": "rm -rf .docz && rm -rf docs",
@@ -40,6 +40,9 @@
     "packages/**/*.{js,tsx,jsx,json,css}": [
       "prettier --single-quote --write"
     ]
+  },
+  "resolutions": {
+    "docz/**/webpack": "4.41.1"
   },
   "devDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -69,8 +72,5 @@
   "peerDependencies": {
     "react": "16.13.1",
     "react-dom": "16.13.1"
-  },
-  "resolutions": {
-    "docz/**/webpack": "4.41.1"
   }
 }
