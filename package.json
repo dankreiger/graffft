@@ -1,6 +1,6 @@
 {
   "name": "graffft",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "license": "MIT",
   "main": "lib/index.cjs.js",
