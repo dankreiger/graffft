@@ -50,7 +50,7 @@ const kinds = (outline: boolean): ButtonKinds => {
 
   return {
     primary: get('#1FB6FF', 'white'),
-    secondary: get('#5352ED', 'white'),
+    secondary: get('#5352EF', 'white'),
     cancel: get('#FF4949', 'white'),
     dark: get('#273444', 'white'),
     gray: get('#8492A6', 'white'),
